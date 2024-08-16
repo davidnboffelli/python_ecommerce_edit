@@ -1,0 +1,15 @@
+Correcciones:
+- Al registrarse, se redirecciona al home. Debería redirigir a la pantalla de loggin o, idealmente, loggearse automaticamente y mantener la redireccion al home.
+- Al desloggearse, se mantiene el carrito. Hay problemas en la sesion
+- Al agregar un producto al carrito sin estar loggeado, la app rompe. Gestionarlo
+- Si entras al carrito sin estar loggeado y avanzas en el pedido ("Go to Checkout"), debería frenarte y mandarte a la seccion de registro.
+
+
+
+todos cambios sobre el archivo "__init__.py" en la carpeta "webapp"
+
+
+
+
+https://chathura-de-silva.github.io/E-Commerce-Platform/#/
+https://github.com/chathura-de-silva/E-Commerce-Platform
