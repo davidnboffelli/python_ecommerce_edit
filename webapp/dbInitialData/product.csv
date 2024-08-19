@@ -43,3 +43,4 @@ product_id INT,title VARCHAR(255),description TEXT,"weight DECIMAL(10, 2)",categ
 142,Canon EOS 90D DSLR Camera,"Capture stunning photos and videos with the Canon EOS 90D DSLR camera, suitable for both enthusiasts and professionals.",1.3,12,product-images/canon_90d.png
 143,R/C Speed Boat,"Enjoy high-speed water adventures with this remote control speed boat, perfect for outdoor fun.",1.4,13,product-images/speed_boat.png
 144,1000-Piece National Parks Puzzle Set,"Explore the beauty of national parks with this 1000-piece puzzle set featuring stunning scenery.",1.0,14,product-images/national_parks_puzzle.png
+145,Gloomhaven,"Vanquish monsters with strategic cardplay. Fulfill your quest to leave your legacy!",2.2,6,product-images/gloomhaven.png

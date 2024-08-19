@@ -80,10 +80,10 @@ ALTER TABLE cart_item
 ADD CONSTRAINT pk_cart_item
 PRIMARY KEY (user_ID,variant_id);
 
-ALTER TABLE cart_item
-ADD CONSTRAINT fk_cart_item0
-FOREIGN KEY (user_ID)
-REFERENCES registered_user(user_id);
+-- ALTER TABLE cart_item
+-- ADD CONSTRAINT fk_cart_item0
+-- FOREIGN KEY (user_ID)
+-- REFERENCES registered_user(user_id);
 
 
 ALTER TABLE cart_item

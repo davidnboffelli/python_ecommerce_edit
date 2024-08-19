@@ -6,7 +6,6 @@ import pandas as pd
 from .dbaccess import getCategoriesandOrders
 
 # Sample data
-
 category, orders = getCategoriesandOrders()
 df = pd.DataFrame(
     {
@@ -15,9 +14,8 @@ df = pd.DataFrame(
     }
 )
 
-
-def categories_Orders(flask_app):
-    dash_app = dash.Dash(server=flask_app, name="Dashboard", url_base_pathname="/dash3/")
+def categories_Orders_pie(flask_app):
+    dash_app = dash.Dash(server=flask_app, name="Dashboard", url_base_pathname="/dash5/")
     dash_app.layout = html.Div(
             children=[
             html.H1(
@@ -53,9 +51,11 @@ def categories_Orders(flask_app):
 
     @dash_app.callback(
         Output("example-graph", "figure"),
+        # [Input("example-graph", "id")]
         [Input("interval-component", "n_intervals")]
     )
     def update_graph(selected_id):
+
         # Load the data within the callback function
         category, orders = getCategoriesandOrders()
         df = pd.DataFrame(
@@ -64,15 +64,13 @@ def categories_Orders(flask_app):
                 "orders": orders,
             }
         )
-        # Create a bar chart using Plotly Express
-        fig = px.bar(df, x="orders", y="category", title="Categories with Orders")
+        # Create a pie chart using Plotly Express
+        fig = px.pie(df, names="category", values="orders", title="Categories with Orders")
           
         fig.update_layout(
-
-        font=dict(family="Arial", size=18),
-        legend=dict(font=dict(family="Arial", size=15)),
-   
-    )
+            font=dict(family="Arial", size=18),
+            legend=dict(font=dict(family="Arial", size=15)),
+        )
         return fig
 
     return dash_app

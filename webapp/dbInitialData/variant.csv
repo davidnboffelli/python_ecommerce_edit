@@ -81,3 +81,5 @@ variant_id INT,product_id INT,name VARCHAR(255),"price DECIMAL(10, 2)",custom_at
 580,143,Red,39.99,Enjoy high-speed adventures on the water,product-images/speed_boat.png
 581,144,National Parks Set 1,24.99,Explore the beauty of US national parks,product-images/national_parks_puzzle.png
 582,144,National Parks Set 2,24.99,Discover more national parks with this puzzle set,product-images/national_parks_puzzle.png
+583,145,Gloomhaven,29.99,Vanquish monsters with strategic cardplay. Fulfill your quest to leave your legacy!,product-images/gloomhaven.png
+584,145,Gloomhaven Jaws of the Lion,39.99,Spin off of the best board game of all time,product-images/gloomhaven_jotl.png

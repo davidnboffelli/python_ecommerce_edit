@@ -3,10 +3,16 @@ Correcciones:
 - Al desloggearse, se mantiene el carrito. Hay problemas en la sesion
 - Al agregar un producto al carrito sin estar loggeado, la app rompe. Gestionarlo
 - Si entras al carrito sin estar loggeado y avanzas en el pedido ("Go to Checkout"), debería frenarte y mandarte a la seccion de registro.
-
-
-
-todos cambios sobre el archivo "__init__.py" en la carpeta "webapp"
+    todos cambios sobre el archivo "__init__.py" en la carpeta "webapp". Correcciones en redirecciones y en el array de la sesión.
+- Agregar dos productos al catálogo.
+    Agrego las imagenes a la carpeta "webapp/static/product-images"
+    Agregar los productos y sus variantes en los archivos "webapp/dbInitialData/product.csv" y "webapp/dbInitialData/variant.csv"
+- Corregir error Al generar pedido con productos sin stock
+- Agregar un tipo nuevo de gráfico distinto a los presentes en la seccion de dashboards.
+    Crear nuevo codigo python con la configuracion en "pandas" para generar el grafico (en este caso de pastel)
+    Cambios en el archivo "templates/analytics3.html"
+    Actualizo "__init__.py" para que lo incorpore en la carga inicial
+- Al realizar una compra, los graficos no se actualizan automáticamente. Es necesario reiniciar la aplicación. Corregir este error en los todos los gráficos.
 
 
 

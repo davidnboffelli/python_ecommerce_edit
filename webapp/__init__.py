@@ -10,6 +10,7 @@ import os
 from .dashapp import create_dash_application
 from .dash_PvsQ import dash_productVStime
 from .dash_CtvsOr import categories_Orders
+from .dash_CtvsOr_pie import categories_Orders_pie
 from .dash_SalesvsMonth import sales_for_product
 
 # creating a global cursor
@@ -17,6 +18,7 @@ app = Flask(__name__)
 create_dash_application(app)
 dash_productVStime(app)
 categories_Orders(app)
+categories_Orders_pie(app)
 sales_for_product(app)
 sess = Session()
 
@@ -167,6 +169,7 @@ def get_varient(product_id):
 
     print(stock_count, "is the stock count")
     signedin = False
+    
     if "userid" in session:
         signedin = True
         return render_template('variants.html', variants=tup, signedin=signedin, stock_count=stock_count)
@@ -216,30 +219,32 @@ def cart():
 def add_to_cart():
     variant_id = request.form.get('variant_id')
     quantity = int(request.form.get('quantity'))
-    try:
-        username = session['username']
-
-        if username is not None:
-            print('hi')
-            # User is logged in, update the database cart
-            user_id = session['userid']
-            # Update the cart_items table in the database
-            # user_id, variant_id, quantity 
-            update_cart(user_id, variant_id, quantity)
-
+    stock_count = get_stock_count(variant_id)
+    if stock_count is None:
+        flash("No hay stock de ese producto.", "warning")
+        return redirect(request.referrer)
+    else:    
+        try:
+            username = session['username']
+            if username is not None:
+                print('hi')
+                # User is logged in, update the database cart
+                user_id = session['userid']
+                # Update the cart_items table in the database
+                # user_id, variant_id, quantity 
+                update_cart(user_id, variant_id, quantity)
+                return redirect(url_for('cart'))
+        except KeyError:
+            # User is not logged in, update the session cart
+            if 'cart' not in session:
+                session['cart'] = {}
+            cart = session['cart']
+            if variant_id in cart:
+                cart[variant_id] += quantity
+            else:
+                cart[variant_id] = quantity
+            session.modified = True  # Mark the session as modified
             return redirect(url_for('cart'))
-    except KeyError:
-        # User is not logged in, update the session cart
-        if 'cart' not in session:
-            session['cart'] = {}
-        cart = session['cart']
-        if variant_id in cart:
-            cart[variant_id] += quantity
-        else:
-            cart[variant_id] = quantity
-        session.modified = True  # Mark the session as modified
-
-        return redirect(url_for('cart'))
 
 
 @app.route('/checkout')
