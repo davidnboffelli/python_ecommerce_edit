@@ -99,10 +99,10 @@ ALTER TABLE orders
 ADD CONSTRAINT pk_order_id
 PRIMARY KEY (order_id);
 
-ALTER TABLE orders
-ADD CONSTRAINT fk_order
-FOREIGN KEY (user_ID)
-REFERENCES  registered_user(user_ID);
+-- ALTER TABLE orders
+-- ADD CONSTRAINT fk_order
+-- FOREIGN KEY (user_ID)
+-- REFERENCES  registered_user(user_ID);
 
 /*
 reg user table keys
